@@ -8,6 +8,13 @@ import {
 import Home from './components/Home/Home';
 import Destination from './components/Destination/Destination';
 
+// import firebase from "firebase/app";
+// import "firebase/auth";
+// import firebaseConfig from './firebase.config';
+import Login from './components/Login/Login';
+
+// firebase.initializeApp(firebaseConfig);
+
 
 function App() {
   return (
@@ -21,6 +28,9 @@ function App() {
         </Route>
         <Route path="/destination">
           <Destination />
+        </Route>
+        <Route path="/login">
+          <Login></Login>
         </Route>
       </Switch>
     </Router>

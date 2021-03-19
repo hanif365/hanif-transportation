@@ -1,0 +1,24 @@
+.form-container{
+    background: tomato;
+    height: 650px;
+    width: 100%;
+    /* position: relative; */
+}
+.form-content{
+    background: turquoise;
+    /* position: absolute; */
+    /* margin: 50px !important; */
+    height: 500px;
+    width: 600px;
+    padding: 30px;
+    margin: auto;
+
+}
+.login-btn{
+    cursor: pointer;
+    color: yellow;
+}
+.create-btn{
+    cursor: pointer;
+    color: green;
+}

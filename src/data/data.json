@@ -1,0 +1,21 @@
+[{
+  "id": 1,
+  "transportName": "BIKE",
+  "mainImage": "https://media.zigcdn.com/media/model/2020/Aug/hornet2-0_360x240.jpg",
+  "logo": "http://dummyimage.com/209x167.jpg/dddddd/000000"
+}, {
+  "id": 2,
+  "transportName": "CAR",
+  "mainImage": "http://dummyimage.com/174x167.jpg/cc0000/ffffff",
+  "logo": "http://dummyimage.com/150x115.png/5fa2dd/ffffff"
+}, {
+  "id": 3,
+  "transportName": "BUS",
+  "mainImage": "http://dummyimage.com/119x243.png/dddddd/000000",
+  "logo": "http://dummyimage.com/158x240.jpg/ff4444/ffffff"
+}, {
+  "id": 4,
+  "transportName": "TRAIN",
+  "mainImage": "http://dummyimage.com/188x126.jpg/ff4444/ffffff",
+  "logo": "http://dummyimage.com/107x210.jpg/dddddd/000000"
+}]
