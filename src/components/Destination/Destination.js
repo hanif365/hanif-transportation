@@ -72,8 +72,8 @@ const Destination = () => {
                                         </div>
                                         <div className="col-md-8">
                                             <div className="card-body">
-                                                <h6>Pick From : {pickFrom}</h6>
-                                                <h6>Pick To : {pickTo}</h6>
+                                                <h6 className="text-light">Pick From : {pickFrom}</h6>
+                                                <h6 className="text-light">Pick To : {pickTo}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@ const Destination = () => {
                                         </div>
                                         <div className="col-md-3">
                                             <div className="card-body">
-                                                <h5 className="card-title">{rideType ===':rideType' ? 'bike' : rideType}</h5>
+                                                <h5 className="card-title">{rideType === ':rideType' ? 'bike' : rideType}</h5>
                                             </div>
                                         </div>
                                         <div className="col-md-3">
@@ -115,12 +115,12 @@ const Destination = () => {
                                         </div>
                                         <div className="col-md-3">
                                             <div className="card-body">
-                                            <h5 className="card-title">{rideType ===':rideType' ? 'bike' : rideType}</h5>
+                                                <h5 className="card-title">{rideType === ':rideType' ? 'bike' : rideType}</h5>
                                             </div>
                                         </div>
                                         <div className="col-md-3">
                                             <div className="card-body">
-                                                <h5><FontAwesomeIcon icon={faUserFriends} /> 2</h5>
+                                                <h5><FontAwesomeIcon icon={faUserFriends} /> 1</h5>
                                             </div>
                                         </div>
                                         <div className="col-md-3">
@@ -142,7 +142,7 @@ const Destination = () => {
                                         </div>
                                         <div className="col-md-3">
                                             <div className="card-body">
-                                            <h5 className="card-title">{rideType ===':rideType' ? 'bike' : rideType}</h5>
+                                                <h5 className="card-title">{rideType === ':rideType' ? 'bike' : rideType}</h5>
                                             </div>
                                         </div>
                                         <div className="col-md-3">
@@ -172,7 +172,6 @@ const Destination = () => {
 
 };
 
-// export default Destination;
 
 export default GoogleApiWrapper({
     apiKey: ('')

@@ -37,10 +37,10 @@ function App() {
             <Home />
           </Route>
           <Route path="/login">
-            <Login></Login>
+            <Login />
           </Route>
           <PrivateRoute path="/service/:rideType">
-            <Destination></Destination>
+            <Destination />
           </PrivateRoute>
           <PrivateRoute path="/blog">
             <Blog />

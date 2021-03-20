@@ -1,8 +1,18 @@
-.main-card{
+.main-card {
     width: 28rem;
-  
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 500ms;
 }
-.main-card img{
+
+.main-card:hover {
+    opacity: 1;
+}
+
+.main-card img {
     height: 12.5rem;
-    /* width: 20rem; */
+}
+
+.card-title {
+    text-transform: uppercase;
 }

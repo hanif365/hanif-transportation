@@ -23,7 +23,7 @@ export class MapContainer extends Component {
             }
         };
     }
-    
+
 
     handleChange = address => {
         this.setState({ address });
@@ -35,8 +35,8 @@ export class MapContainer extends Component {
             .then(latLng => {
                 console.log('Success', latLng);
                 this.setState({ address });
-                this.setState({ mapCenter : latLng })
-            }) 
+                this.setState({ mapCenter: latLng })
+            })
             .catch(error => console.error('Error', error));
     };
 
@@ -62,7 +62,7 @@ export class MapContainer extends Component {
                                     const className = suggestion.active
                                         ? 'suggestion-item--active'
                                         : 'suggestion-item';
-                                    // inline style for demonstration purpose
+
                                     const style = suggestion.active
                                         ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                                         : { backgroundColor: '#ffffff', cursor: 'pointer' };

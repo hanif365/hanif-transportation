@@ -1,46 +1,54 @@
-#user-name{
-    color:rgb(250, 234, 11) !important;
+#user-name {
+    color: rgb(250, 234, 11) !important;
     text-decoration: underline;
     text-transform: uppercase;
 }
-.logo{
+
+.logo {
     font-size: 30px;
     color: #000;
 }
-.brand-name{
+
+.brand-name {
     font-size: 26px;
     font-weight: 700;
     color: #000;
     transition: all 700ms;
 }
-.brand-name:hover{
+
+.brand-name:hover {
     color: #fff !important;
 }
-.navbar{
+
+.navbar {
     background-color: #00b4d8 !important;
 }
-.nav-link{
+
+.nav-link {
     color: #000 !important;
-    font-size : 18px;
+    font-size: 18px;
     font-weight: 600;
     transition: all 600ms;
 }
-.nav-link:hover{
+
+.nav-link:hover {
     color: #ffff !important;
 }
-.active{
+
+.active {
     color: #fff !important;
 }
-.sign-out-btn{
+
+.sign-out-btn {
     color: #000;
     font-size: 20px;
     border-radius: 5px;
     border: none;
     transition: all 600ms;
     padding: 0 20px;
-
 }
-.sign-out-btn:hover{
+
+.sign-out-btn:hover {
     background: #000;
     color: #fff;
 }

@@ -43,22 +43,16 @@ const Login = () => {
     });
 
     const handleBlur = (e) => {
-        console.log(e.target.name, e.target.value);
-
         let isFieldValid = true;
 
         if (e.target.name === 'email') {
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
-            if (isFieldValid === false) {
-                console.log('False email given');
-            }
         }
         if (e.target.name === 'password' || e.target.name === 'confirmedPassword') {
             const isPasswordValid = e.target.value.length > 6;
             const passwordHasNumber = /\d{1}/.test(e.target.value);
             isFieldValid = isPasswordValid && passwordHasNumber;
             if (isFieldValid === false) {
-                console.log('False password given');
                 alert('Wrong password pattern given. Please follow below instruction.');
             }
         }
@@ -71,7 +65,6 @@ const Login = () => {
     }
 
     const handleSubmit = (e) => {
-        // console.log(user.email, user.password)
         if (newUser && user.email && user.password) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then(res => {
@@ -81,15 +74,8 @@ const Login = () => {
                     setUser(newUserInfo);
 
                     updateUserName(user.name);
-                    console.log(user.name);
-                    // Signed in 
-                    // const user = res.user;
                 })
                 .catch((err) => {
-                    // const errorCode = error.code;
-                    // const errorMessage = error.message;
-                    // console.log(errorCode, errorMessage);
-
                     const newUserInfo = { ...user };
                     newUserInfo.error = err.message;
                     newUserInfo.success = false;
@@ -107,7 +93,6 @@ const Login = () => {
 
                     setLoggedInUser(newUserInfo);
                     history.replace(from);
-                    console.log('Sign in user info', res.user);
                 })
                 .catch((err) => {
                     const newUserInfo = { ...user };
@@ -126,11 +111,8 @@ const Login = () => {
 
         user.updateProfile({
             displayName: name,
-            // photoURL: "https://example.com/jane-q-user/profile.jpg"
         }).then(function () {
-            console.log('Username updated Successfully!');
         }).catch(function (error) {
-            console.log(error);
         });
     }
 
@@ -148,21 +130,13 @@ const Login = () => {
                     email: email,
                     photo: photoURL
                 }
-                // setUser(signedInUser);
                 setLoggedInUser(signedInUser);
                 history.replace(from);
-                // var user = res.user;
-                console.log(res);
-                console.log(displayName, email, photoURL);
             }).catch(err => {
-                // Handle Errors here.
                 var errorCode = err.code;
                 var errorMessage = err.message;
-                // The email of the user's account used.
                 var email = err.email;
-                // The firebase.auth.AuthCredential type that was used.
                 var credential = err.credential;
-                console.log(errorMessage)
             });
 
     }
@@ -178,27 +152,22 @@ const Login = () => {
                                 <div >
                                     <h5 className="text-danger">{user.error}</h5>
                                     {
-                                        user.success && <h4 className="text-success">User {newUser ? 'Created' : 'Logged in'} Successfully</h4>
+                                        user.success && <h4 className="text-success">User Created Successfully</h4>
 
                                     }
                                 </div>
                                 <h2>{newUser ? 'Create an Account' : 'Login'}</h2>
                                 <div class="mb-3">
-                                    {/* <label for="exampleInputEmail1" class="form-label">Name</label> */}
                                     {newUser && <input onBlur={handleBlur} type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="name" placeholder="Name" required />}
                                 </div>
                                 <div class="mb-3">
-                                    {/* <label for="exampleInputEmail1" class="form-label">Email address</label> */}
                                     <input onBlur={handleBlur} type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email" required />
-                                    {/* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> */}
                                 </div>
                                 <div class="mb-3">
-                                    {/* <label for="exampleInputPassword1" class="form-label">Password</label> */}
                                     <input onBlur={handleBlur} type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password" required />
                                     <p>Please give at list 7 digit including a number</p>
                                 </div>
                                 <div class="mb-3">
-                                    {/* <label for="exampleInputPassword1" class="form-label">Password</label> */}
                                     <input onBlur={handleBlur} type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="confirmedPassword" placeholder="Confirmed Password" required />
                                     <p>Please give at list 7 digit including a number</p>
                                 </div>
@@ -206,7 +175,6 @@ const Login = () => {
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                     <label class="form-check-label" for="exampleCheck1">Remainder me</label>
                                 </div>
-                                {/* <button type="submit" class="btn btn-primary">Submit</button> */}
                                 <input type="submit" class="btn btn-success w-100" value={newUser ? "CREATE AN ACCOUNT" : "LOGIN"} />
                                 <h5>{newUser ? "Already have an account?" : "Don't have an account?"}<span>{newUser ? <span className="login-btn" onClick={() => SetNewUser(!newUser)}> Login now</span> : <span className="create-btn" onClick={() => SetNewUser(!newUser)}> Create an account</span>}</span></h5>
                             </form>
