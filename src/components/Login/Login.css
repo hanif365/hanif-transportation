@@ -1,7 +1,11 @@
-.form-container{
+.main-container{
     background: tomato;
-    height: 650px;
-    width: 100%;
+    height: 850px;
+}
+.form-container{
+    /* background: tomato; */
+    /* height: 650px; */
+    /* width: 100%; */
     /* position: relative; */
 }
 .form-content{

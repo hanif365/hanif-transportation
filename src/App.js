@@ -12,28 +12,43 @@ import Destination from './components/Destination/Destination';
 // import "firebase/auth";
 // import firebaseConfig from './firebase.config';
 import Login from './components/Login/Login';
+import { createContext, useState } from 'react';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Blog from './components/Blog/Blog';
+import Contact from './components/Contact/Contact';
 
 // firebase.initializeApp(firebaseConfig);
 
+export const UserContext = createContext()
+
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/destination">
-          <Destination />
-        </Route>
-        <Route path="/login">
-          <Login></Login>
-        </Route>
-      </Switch>
-    </Router>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+          <PrivateRoute path="/service/:rideType">
+            <Destination></Destination>
+          </PrivateRoute>
+          <PrivateRoute path="/blog">
+            <Blog />
+          </PrivateRoute>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
