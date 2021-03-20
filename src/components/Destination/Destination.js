@@ -15,6 +15,9 @@ import bike from '../../Assets/Images/bike.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
 
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import GoogleMap from '../GoogleMap/GoogleMap';
+
 const Destination = () => {
     const [show, setShow] = useState(true);
     const { rideType } = useParams();
@@ -44,7 +47,7 @@ const Destination = () => {
             <Navbar></Navbar>
             <div className="container py-5">
                 <div className="row">
-                    {show ? <div className="col-md-5 ride-info">
+                    {show ? <div className="col-md-8 ride-info m-auto py-5">
                         <form onSubmit={handleSubmit(onSubmit)} className="bg-success p-4">
                             <label htmlFor="pickFrom" className="form-label">Pick From</label>
                             <input name="example" className="form-control" onBlur={handlePickFrom} name="pickFrom" id="pickFrom" ref={register} />
@@ -160,9 +163,13 @@ const Destination = () => {
                             {/*  */}
                         </div>
                     }
-                    <div className="col-md-7 map">
-                        <img src={fakeImg} alt="" />
-
+                    {/* <div className="col google-map">
+                        <GoogleMap></GoogleMap>
+                    </div> */}
+                </div>
+                <div className="row">
+                    <div className="col google-map">
+                        <GoogleMap></GoogleMap>
                     </div>
                 </div>
             </div>
@@ -171,4 +178,8 @@ const Destination = () => {
 
 };
 
-export default Destination;
+// export default Destination;
+
+export default GoogleApiWrapper({
+    apiKey: ('')
+})(Destination)
