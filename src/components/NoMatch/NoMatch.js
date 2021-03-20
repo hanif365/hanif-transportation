@@ -12,7 +12,7 @@ const NoMatch = () => {
                         <h1>404! Not Found!</h1>
                         <img src={errorImg} alt="error-message" />
                         <h3>Your Search item is not find. Please search another things.</h3>
-                        <Link className="btn btn-danger" to="/home">Close</Link>
+                        <Link className="btn btn-danger" to="/">Close</Link>
                     </div>
                 </div>
             </div>

@@ -10,10 +10,13 @@ const Home = () => {
         <div className="home-container">
             <Navbar></Navbar>
             <Carousel></Carousel>
-            <div className="my-5 text-center">
-                <h2>Our Services</h2>
+            <div className="my-5 text-center service-container">
+                <div className="py-5">
+                    <h2>OUR SERVICES</h2>
+                    <hr />
+                </div>
                 <Services></Services>
-                
+
             </div>
         </div>
     );

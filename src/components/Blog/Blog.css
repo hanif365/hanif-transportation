@@ -1,0 +1,10 @@
+.blog-container {
+    background-color: mediumturquoise;
+    text-align: center;
+    margin-top: 100px !important;
+}
+
+.blog-container img {
+    width: 100%;
+    height: 22rem;
+}

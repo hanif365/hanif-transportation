@@ -1,21 +1,21 @@
 [{
   "id": 1,
-  "transportName": "BIKE",
+  "transportName": "bike",
   "mainImage": "https://bd.gaadicdn.com/processedimages/yamaha/yzf-r15-v3/640X309/yzf-r15-v35f5726e82c49b.jpg",
   "logo": "http://dummyimage.com/209x167.jpg/dddddd/000000"
 }, {
   "id": 2,
-  "transportName": "CAR",
+  "transportName": "car",
   "mainImage": "https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option1-764A5360-edit.jpg",
   "logo": "http://dummyimage.com/150x115.png/5fa2dd/ffffff"
 }, {
   "id": 3,
-  "transportName": "BUS",
+  "transportName": "bus",
   "mainImage": "https://www.sustainable-bus.com/wp-content/uploads/2019/12/scania-bus4.jpg",
   "logo": "http://dummyimage.com/158x240.jpg/ff4444/ffffff"
 }, {
   "id": 4,
-  "transportName": "TRAIN",
+  "transportName": "train",
   "mainImage": "https://media.kasperskydaily.com/wp-content/uploads/sites/92/2015/12/06023356/train-hack-featured-1.jpg",
   "logo": "http://dummyimage.com/107x210.jpg/dddddd/000000"
 }]

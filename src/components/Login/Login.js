@@ -5,9 +5,12 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
 
-import {UserContext} from '../../App'
+import { UserContext } from '../../App'
 import { useHistory, useLocation } from 'react-router';
 import Navbar from '../Navbar/Navbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { } from '@fortawesome/free-solid-svg-icons'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 
 
@@ -50,12 +53,13 @@ const Login = () => {
                 console.log('False email given');
             }
         }
-        if (e.target.name === 'password') {
+        if (e.target.name === 'password' || e.target.name === 'confirmedPassword') {
             const isPasswordValid = e.target.value.length > 6;
             const passwordHasNumber = /\d{1}/.test(e.target.value);
             isFieldValid = isPasswordValid && passwordHasNumber;
             if (isFieldValid === false) {
                 console.log('False password given');
+                alert('Wrong password pattern given. Please follow below instruction.');
             }
         }
         if (isFieldValid) {
@@ -137,11 +141,11 @@ const Login = () => {
         firebase.auth()
             .signInWithPopup(googleProvider)
             .then(res => {
-                const {displayName, email, photoURL} = res.user;
+                const { displayName, email, photoURL } = res.user;
                 const signedInUser = {
-                    isSignedIn:true,
+                    isSignedIn: true,
                     name: displayName,
-                    email : email,
+                    email: email,
                     photo: photoURL
                 }
                 // setUser(signedInUser);
@@ -169,15 +173,10 @@ const Login = () => {
             <div className="row">
                 <div className="col">
                     <div className="form-container">
-                        {/* <h1>This is Login Page</h1>
-                        <p>Name : {user.name}</p>
-                        <p>Email : {user.email}</p>
-                        <p>Password : {user.password}</p> */}
                         <div className="form-content mt-5">
                             <form onSubmit={handleSubmit} className="">
                                 <div >
                                     <h5 className="text-danger">{user.error}</h5>
-                                    <h3>Welcome to {user.name}</h3>
                                     {
                                         user.success && <h4 className="text-success">User {newUser ? 'Created' : 'Logged in'} Successfully</h4>
 
@@ -198,20 +197,23 @@ const Login = () => {
                                     <input onBlur={handleBlur} type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password" required />
                                     <p>Please give at list 7 digit including a number</p>
                                 </div>
+                                <div class="mb-3">
+                                    {/* <label for="exampleInputPassword1" class="form-label">Password</label> */}
+                                    <input onBlur={handleBlur} type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="confirmedPassword" placeholder="Confirmed Password" required />
+                                    <p>Please give at list 7 digit including a number</p>
+                                </div>
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                     <label class="form-check-label" for="exampleCheck1">Remainder me</label>
                                 </div>
                                 {/* <button type="submit" class="btn btn-primary">Submit</button> */}
-                                <input type="submit" class="btn btn-primary w-100" value={newUser ? "Create an account" : "Login"} />
-                                <p>{newUser ? "Already have an account?" : "Don't have an account?"}<span>{newUser ? <span className="login-btn" onClick={() => SetNewUser(!newUser)}> Login now</span> : <span className="create-btn" onClick={() => SetNewUser(!newUser)}> Create an account</span>}</span></p>
-                                {/* <input type="checkbox" onChange={() => SetNewUser(!newUser)} name="newUser" id="" />
-                <label htmlFor="newUser">New User Sign up</label> */}
+                                <input type="submit" class="btn btn-success w-100" value={newUser ? "CREATE AN ACCOUNT" : "LOGIN"} />
+                                <h5>{newUser ? "Already have an account?" : "Don't have an account?"}<span>{newUser ? <span className="login-btn" onClick={() => SetNewUser(!newUser)}> Login now</span> : <span className="create-btn" onClick={() => SetNewUser(!newUser)}> Create an account</span>}</span></h5>
                             </form>
                         </div>
                     </div>
                     <div className="google-container text-center py-5">
-                        <button onClick={handleGoogleSignIn}>Continue With Google</button>
+                        <button className="btn btn-info btn-lg px-5" onClick={handleGoogleSignIn}><FontAwesomeIcon className="logo" icon={faGoogle} /> Continue With Google</button>
                         {
                             user.isSignedIn && <p>Welcome, {user.name}</p>
                         }

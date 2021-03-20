@@ -17,6 +17,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Blog from './components/Blog/Blog';
 import Contact from './components/Contact/Contact';
 import NoMatch from './components/NoMatch/NoMatch';
+import Footer from './components/Footer/Footer';
 
 // firebase.initializeApp(firebaseConfig);
 
@@ -52,6 +53,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer></Footer>
     </UserContext.Provider>
   );
 }

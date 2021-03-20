@@ -1,0 +1,37 @@
+/******************************** Footer Style ********************************/
+
+#footer-section {
+    /* background: #4895ef; */
+    background: #48cae4;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+}
+
+#footer-section a {
+    color: yellow;
+    font-weight: 600;
+    transition: all 600ms;
+}
+
+#footer-section a:hover {
+    color: rgba(250, 4, 176, 0.795);
+}
+
+/**************************** Bootom To Top Button *****************************/
+
+.bottom-to-top {
+    position: fixed;
+    bottom: 60px;
+    right: 3px;
+    background: #12a6c7;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    transition: all 500ms;
+}
+
+.bottom-to-top:hover {
+    background: #8d03fd;
+    color: #fff;
+}
