@@ -29,7 +29,6 @@ const Login = () => {
     const location = useLocation();
 
     const { from } = location.state || { from: { pathname: "/" } };
-    // end google
     const [newUser, SetNewUser] = useState(false);
 
     const [user, setUser] = useState({
@@ -45,18 +44,18 @@ const Login = () => {
     const handleBlur = (e) => {
         let isFieldValid = true;
 
-        if (e.target.name === 'email') {
+        if (e.target.name === 'email') {                            // Check email field validation using regular expression
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
         }
         if (e.target.name === 'password' || e.target.name === 'confirmedPassword') {
-            const isPasswordValid = e.target.value.length > 6;
-            const passwordHasNumber = /\d{1}/.test(e.target.value);
+            const isPasswordValid = e.target.value.length > 6;      // Check password field validation, password length must be
+            const passwordHasNumber = /\d{1}/.test(e.target.value); // greater than 6 and have at least one number.
             isFieldValid = isPasswordValid && passwordHasNumber;
-            if (isFieldValid === false) {
+            if (isFieldValid === false) {                           // if password pattern wrong show an message using alert popup
                 alert('Wrong password pattern given. Please follow below instruction.');
             }
         }
-        if (isFieldValid) {
+        if (isFieldValid) {                         // if email and password both right format then update it  using setUser
             const newUserInfo = { ...user };
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
@@ -65,8 +64,8 @@ const Login = () => {
     }
 
     const handleSubmit = (e) => {
-        if (newUser && user.email && user.password) {
-            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+        if (newUser && user.email && user.password) {       // if a user is newuser and email and password is true then submit 
+            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)   // the info and update also
                 .then(res => {
                     const newUserInfo = { ...user };
                     newUserInfo.error = "";
@@ -75,7 +74,7 @@ const Login = () => {
 
                     updateUserName(user.name);
                 })
-                .catch((err) => {
+                .catch((err) => {                       // if an error occur then set error message
                     const newUserInfo = { ...user };
                     newUserInfo.error = err.message;
                     newUserInfo.success = false;
@@ -83,8 +82,8 @@ const Login = () => {
                 });
         }
 
-        if (!newUser && user.email && user.password) {
-            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+        if (!newUser && user.email && user.password) {                              // if user is not newuser and both email and
+            firebase.auth().signInWithEmailAndPassword(user.email, user.password)   // password valid then sign in
                 .then(res => {
                     const newUserInfo = { ...user };
                     newUserInfo.error = "";

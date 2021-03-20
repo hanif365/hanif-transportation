@@ -17,9 +17,9 @@ import { faPlane, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import GoogleMap from '../GoogleMap/GoogleMap';
 
-const Destination = () => {
+const Destination = () => {                     
     const [show, setShow] = useState(true);
-    const { rideType } = useParams();
+    const { rideType } = useParams();           // useParams()
 
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => console.log(data);
@@ -27,15 +27,15 @@ const Destination = () => {
     // for date
     const [value, onChange] = useState(new Date());
 
-    const [pickFrom, setPickForm] = useState('');
+    const [pickFrom, setPickForm] = useState('');       // use useState()
     const [pickTo, setPickTo] = useState('');
 
-    const handlePickFrom = (e) => {
+    const handlePickFrom = (e) => {                     // use handlePickFrom to know the place where from passenger picked
         console.log(e.target.name, e.target.value);
         setPickForm(e.target.value);
     }
 
-    const handlePickTo = (e) => {
+    const handlePickTo = (e) => {                       // use handlePickFrom to know the place where passenger want to go
         console.log(e.target.name, e.target.value);
         setPickTo(e.target.value);
     }
