@@ -45,7 +45,7 @@ const Destination = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="container py-5">
+            <div className="container-fluid py-5">
                 <div className="row">
                     {show ? <div className="col-md-8 ride-info m-auto py-5">
                         <form onSubmit={handleSubmit(onSubmit)} className="bg-success p-4">
@@ -65,8 +65,8 @@ const Destination = () => {
                             <input onClick={() => setShow(!show)} className="w-100 mt-4" type="submit" />
                         </form>
                     </div> :
-                        <div className="col-md-5 ride-details">
-                            <div className="bg-primary p-3">
+                        <div className="col-md-5 ride-details m-auto py-5">
+                            <div className="bg-primary p-4">
                                 <div className="card mb-3 bg-success">
                                     <div className="row g-0">
                                         <div className="col-md-4">

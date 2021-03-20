@@ -16,6 +16,7 @@ import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Blog from './components/Blog/Blog';
 import Contact from './components/Contact/Contact';
+import NoMatch from './components/NoMatch/NoMatch';
 
 // firebase.initializeApp(firebaseConfig);
 
@@ -45,6 +46,9 @@ function App() {
           </PrivateRoute>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="*">
+            <NoMatch />
           </Route>
         </Switch>
       </Router>
