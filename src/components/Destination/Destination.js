@@ -42,7 +42,7 @@ const Destination = () => {
             <Navbar></Navbar>
             <div className="container py-5">
                 <div className="row">
-                    {show ? <div className="col-md-4 ride-info  py-5 select-route-form">
+                    {show ? <div className="col-md-5 ride-info  py-5 select-route-form">
                         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
                             <h3>SELECT YOUR JOURNEY ROUTE <FontAwesomeIcon icon={faPlane} /></h3>
                             <label htmlFor="pickFrom" className="form-label"><b>Pick From</b></label>
@@ -59,8 +59,8 @@ const Destination = () => {
                             <input onClick={() => setShow(!show)} className="w-100 mt-4 py-2" type="submit" />
                         </form>
                     </div> :
-                        <div className="col-md-4 ride-details  py-5">
-                            <div className="p-4 ride-content">
+                        <div className="col-md-5 ride-details  py-5">
+                            <div className="ride-content">
                                 <div className="card mb-3 bg-success">
                                     <div className="row g-0">
                                         <div className="col-md-4">
@@ -89,12 +89,12 @@ const Destination = () => {
                                         }
                                         {rideType ? <div className="col-md-3">
                                             <div className="card-body">
-                                                <h5 className="card-title">{rideType}</h5>
+                                                <p className="card-title">{rideType}</p>
                                             </div>
                                         </div> :
                                             <div className="col-md-3">
                                                 <div className="card-body">
-                                                    <h5 className="card-title">bike</h5>
+                                                    <p className="card-title">bike</p>
                                                 </div>
                                             </div>
                                         }
@@ -124,12 +124,12 @@ const Destination = () => {
                                         }
                                         {rideType ? <div className="col-md-3">
                                             <div className="card-body">
-                                                <h5 className="card-title">{rideType}</h5>
+                                                <p className="card-title">{rideType}</p>
                                             </div>
                                         </div> :
                                             <div className="col-md-3">
                                                 <div className="card-body">
-                                                    <h5 className="card-title">bike</h5>
+                                                    <p className="card-title">bike</p>
                                                 </div>
                                             </div>
 
@@ -161,12 +161,12 @@ const Destination = () => {
                                         }
                                         {rideType ? <div className="col-md-3">
                                             <div className="card-body">
-                                                <h5 className="card-title">{rideType}</h5>
+                                                <p className="card-title">{rideType}</p>
                                             </div>
                                         </div> :
                                             <div className="col-md-3">
                                                 <div className="card-body">
-                                                    <h5 className="card-title">bike</h5>
+                                                    <p className="card-title">bike</p>
                                                 </div>
                                             </div>
                                         }
@@ -186,7 +186,7 @@ const Destination = () => {
                         </div>
                     }
 
-                    <div className="col-md-8 google-map py-5 my-5 ps-3">
+                    <div className="col-md-7 google-map py-5 my-5 ps-3">
                         <Map></Map>
                     </div>
                 </div>
