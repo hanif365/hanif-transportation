@@ -9,14 +9,8 @@ import car from '../../Assets/Images/car.png'
 import bus from '../../Assets/Images/bus.png'
 import train from '../../Assets/Images/train.png'
 import bike from '../../Assets/Images/bike.png'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faUserFriends } from '@fortawesome/free-solid-svg-icons'
-
-// import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import GoogleMap from '../GoogleMap/GoogleMap';
-
-//New map
 import Map from '../Map/Map';
 
 
@@ -48,7 +42,7 @@ const Destination = () => {
             <Navbar></Navbar>
             <div className="container py-5">
                 <div className="row">
-                    {show ? <div className="col-md-4 ride-info m-auto py-5 select-route-form">
+                    {show ? <div className="col-md-4 ride-info  py-5 select-route-form">
                         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
                             <h3>SELECT YOUR JOURNEY ROUTE <FontAwesomeIcon icon={faPlane} /></h3>
                             <label htmlFor="pickFrom" className="form-label"><b>Pick From</b></label>
@@ -65,7 +59,7 @@ const Destination = () => {
                             <input onClick={() => setShow(!show)} className="w-100 mt-4 py-2" type="submit" />
                         </form>
                     </div> :
-                        <div className="col-md-5 ride-details m-auto py-5">
+                        <div className="col-md-4 ride-details  py-5">
                             <div className="p-4 ride-content">
                                 <div className="card mb-3 bg-success">
                                     <div className="row g-0">
@@ -201,10 +195,5 @@ const Destination = () => {
     );
 
 };
-
-
-// export default GoogleApiWrapper({
-//     apiKey: ('')
-// })(Destination)
 
 export default Destination;

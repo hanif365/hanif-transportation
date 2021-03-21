@@ -54,8 +54,9 @@
     background: #000;
     color: #fff;
 }
-@media (max-width:576px){
-    .brand-name{
+
+@media (max-width:576px) {
+    .brand-name {
         font-size: 1rem;
     }
 }

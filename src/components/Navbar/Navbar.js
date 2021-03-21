@@ -25,9 +25,8 @@ const Navbar = () => {
                                 loggedInUser.email ? <Link className="nav-link" id="user-name">{loggedInUser.name}</Link> : <Link to="/login" className="nav-link btn btn-info px-5">LOG IN</Link>
                             }
                             {
-                                loggedInUser.email ? <button className="sign-out-btn" onClick={() => setLoggedInUser({})}>SIGN OUT</button> : ''
+                                loggedInUser.email ? <button className="sign-out-btn btn-lg" onClick={() => setLoggedInUser({})}>SIGN OUT</button> : ''
                             }
-                            {/* <button className="sign-out-btn" onClick={() => setLoggedInUser({})}>SIGN OUT</button> */}
                         </div>
                     </div>
                 </div>

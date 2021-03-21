@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import GoogleMap from '../GoogleMap/GoogleMap';
 import Navbar from '../Navbar/Navbar';
 import './Contact.css'
 import contactImg from '../../Assets/Images/banner2.jpg'
