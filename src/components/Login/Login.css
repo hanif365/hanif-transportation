@@ -2,17 +2,10 @@
     background: #a2d2ff;
     height: 850px;
 }
-.form-container{
-    /* background: tomato; */
-    /* height: 650px; */
-    /* width: 100%; */
-    /* position: relative; */
-}
+
 .form-content{
     background: turquoise;
-    /* position: absolute; */
-    /* margin: 50px !important; */
-    height: 600px;
+    height: 570px;
     width: 600px;
     padding: 30px;
     margin: auto;
@@ -26,4 +19,7 @@
 .create-btn{
     cursor: pointer;
     color: rgb(128, 0, 122);
+}
+.forgot-password{
+    margin-left: 250px;
 }

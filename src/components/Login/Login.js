@@ -11,6 +11,7 @@ import Navbar from '../Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,6 +28,17 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
+
+    // if only password and confirmed password matched then an user account created
+
+    const [password, setPassword] = useState({
+        passName: '',
+        errorMesg: ''
+    });
+    const [conPassword, setConPassword] = useState({
+        passName: '',
+        errorMesg: ''
+    });
 
     const { from } = location.state || { from: { pathname: "/" } };
     const [newUser, SetNewUser] = useState(false);
@@ -48,19 +60,40 @@ const Login = () => {
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
         }
         if (e.target.name === 'password' || e.target.name === 'confirmedPassword') {
+            console.log(e.target.name, e.target.value);
             const isPasswordValid = e.target.value.length > 6;      // Check password field validation, password length must be
             const passwordHasNumber = /\d{1}/.test(e.target.value); // greater than 6 and have at least one number.
             isFieldValid = isPasswordValid && passwordHasNumber;
             if (isFieldValid === false) {                           // if password pattern wrong show an message using alert popup
                 alert('Wrong password pattern given. Please follow below instruction.');
             }
+            console.log(e.target.value.length);
+            let firstPassword = e.target.value.length;
         }
+        if (e.target.name === 'password') {
+            const newPassword = {...password};
+            newPassword.passName = e.target.value;
+            setPassword(newPassword);
+        }
+        if (e.target.name === 'confirmedPassword') {
+            const newConPassword = {...conPassword};
+            newConPassword.passName = e.target.value;
+            setConPassword(newConPassword);
+        }
+        if (password.passName !== conPassword.passName) {   // if password and confirmed password not match then show an error
+            const newErrorMesg = {...password};             // message.
+            newErrorMesg.errorMesg = "Password and Confirmed Password not Matched! Please give same password both field";
+            setPassword(newErrorMesg);
+        }
+
+
         if (isFieldValid) {                         // if email and password both right format then update it  using setUser
             const newUserInfo = { ...user };
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
 
         }
+
     }
 
     const handleSubmit = (e) => {
@@ -149,32 +182,41 @@ const Login = () => {
                         <div className="form-content mt-5">
                             <form onSubmit={handleSubmit} className="">
                                 <div >
-                                    <h5 className="text-danger">{user.error}</h5>
+                                    {/* <h1>Password : {password.passName}</h1>
+                                    <h1>Con Password : {conPassword.passName}</h1> */}
+                                    {newUser && password.passName !== conPassword.passName &&  <p className="text-danger">{password.errorMesg}</p>}
+                                    <p className="text-danger">{user.error}</p>
                                     {
                                         user.success && <h4 className="text-success">User Created Successfully</h4>
 
                                     }
                                 </div>
                                 <h2>{newUser ? 'Create an Account' : 'Login'}</h2>
-                                <div class="mb-3">
-                                    {newUser && <input onBlur={handleBlur} type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="name" placeholder="Name" required />}
-                                </div>
+                                {newUser && <div class="mb-3">
+                                    <input onBlur={handleBlur} type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="name" placeholder="Name" required />
+                                </div>}
                                 <div class="mb-3">
                                     <input onBlur={handleBlur} type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email" required />
                                 </div>
+
+                                {/* 0000000000000000000000 */}
+
                                 <div class="mb-3">
                                     <input onBlur={handleBlur} type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password" required />
                                     <p>Please give at list 7 digit including a number</p>
                                 </div>
-                                <div class="mb-3">
+                                {newUser && <div class="mb-3">
                                     <input onBlur={handleBlur} type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="confirmedPassword" placeholder="Confirmed Password" required />
                                     <p>Please give at list 7 digit including a number</p>
-                                </div>
+                                </div>}
+
+                                {/*  00000000000000000000000000000000*/}
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                     <label class="form-check-label" for="exampleCheck1">Remainder me</label>
+                                    {!newUser && <Link className="forgot-password" to="/login" onClick={() => SetNewUser(!newUser)}>Forgot password?</Link>}
                                 </div>
-                                <input type="submit" class="btn btn-success w-100" value={newUser ? "CREATE AN ACCOUNT" : "LOGIN"} />
+                                <input onClick={handleBlur} type="submit" class="btn btn-success w-100" value={newUser ? "CREATE AN ACCOUNT" : "LOGIN"} />
                                 <h5>{newUser ? "Already have an account?" : "Don't have an account?"}<span>{newUser ? <span className="login-btn" onClick={() => SetNewUser(!newUser)}> Login now</span> : <span className="create-btn" onClick={() => SetNewUser(!newUser)}> Create an account</span>}</span></h5>
                             </form>
                         </div>

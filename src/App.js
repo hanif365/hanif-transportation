@@ -42,6 +42,9 @@ function App() {
           <PrivateRoute path="/service/:rideType">
             <Destination />
           </PrivateRoute>
+          <PrivateRoute path="/destination">
+            <Destination />
+          </PrivateRoute>
           <PrivateRoute path="/blog">
             <Blog />
           </PrivateRoute>

@@ -17,7 +17,7 @@ import { faPlane, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import GoogleMap from '../GoogleMap/GoogleMap';
 
-const Destination = () => {                     
+const Destination = () => {
     const [show, setShow] = useState(true);
     const { rideType } = useParams();           // useParams()
 
@@ -80,18 +80,28 @@ const Destination = () => {
                                 </div>
                                 <div className="card mb-3 text-center">
                                     <div className="row g-0">
-                                        <div className="col-md-3">
+                                        {rideType ? <div className="col-md-3">
                                             {rideType === 'bike' ? <img className="transport-img" src={bike} alt="bike-image" /> : ''}
                                             {rideType === 'car' ? <img className="transport-img" src={car} alt="car-image" /> : ''}
                                             {rideType === 'bus' ? <img className="transport-img" src={bus} alt="bus-image" /> : ''}
                                             {rideType === 'train' ? <img className="transport-img" src={train} alt="train-image" /> : ''}
-                                            {rideType === ':rideType' ? <img className="transport-img" src={bike} alt="bike-image" /> : ''}
-                                        </div>
-                                        <div className="col-md-3">
-                                            <div className="card-body">
-                                                <h5 className="card-title">{rideType === ':rideType' ? 'bike' : rideType}</h5>
+                                        </div> :
+
+                                            <div className="col-md-3">
+                                                <img className="transport-img" src={bike} alt="bike-image" />
                                             </div>
-                                        </div>
+                                        }
+                                        {rideType ? <div className="col-md-3">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{rideType}</h5>
+                                            </div>
+                                        </div> :
+                                            <div className="col-md-3">
+                                                <div className="card-body">
+                                                    <h5 className="card-title">bike</h5>
+                                                </div>
+                                            </div>
+                                        }
                                         <div className="col-md-3">
                                             <div className="card-body">
                                                 <h5><FontAwesomeIcon icon={faUserFriends} /> 2</h5>
@@ -106,18 +116,28 @@ const Destination = () => {
                                 </div>
                                 <div className="card mb-3 text-center">
                                     <div className="row g-0">
-                                        <div className="col-md-3">
+                                        {rideType ? <div className="col-md-3">
                                             {rideType === 'bike' ? <img className="transport-img" src={bike} alt="bike-image" /> : ''}
                                             {rideType === 'car' ? <img className="transport-img" src={car} alt="car-image" /> : ''}
                                             {rideType === 'bus' ? <img className="transport-img" src={bus} alt="bus-image" /> : ''}
                                             {rideType === 'train' ? <img className="transport-img" src={train} alt="train-image" /> : ''}
-                                            {rideType === ':rideType' ? <img className="transport-img" src={bike} alt="bike-image" /> : ''}
-                                        </div>
-                                        <div className="col-md-3">
-                                            <div className="card-body">
-                                                <h5 className="card-title">{rideType === ':rideType' ? 'bike' : rideType}</h5>
+                                        </div> :
+                                            <div className="col-md-3">
+                                                <img className="transport-img" src={bike} alt="bike-image" />
                                             </div>
-                                        </div>
+                                        }
+                                        {rideType ? <div className="col-md-3">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{rideType}</h5>
+                                            </div>
+                                        </div> :
+                                            <div className="col-md-3">
+                                                <div className="card-body">
+                                                    <h5 className="card-title">bike</h5>
+                                                </div>
+                                            </div>
+
+                                        }
                                         <div className="col-md-3">
                                             <div className="card-body">
                                                 <h5><FontAwesomeIcon icon={faUserFriends} /> 1</h5>
@@ -133,18 +153,27 @@ const Destination = () => {
                                 {/*  */}
                                 <div className="card mb-3 text-center">
                                     <div className="row g-0">
-                                        <div className="col-md-3">
+                                        {rideType ? <div className="col-md-3">
                                             {rideType === 'bike' ? <img className="transport-img" src={bike} alt="bike-image" /> : ''}
                                             {rideType === 'car' ? <img className="transport-img" src={car} alt="car-image" /> : ''}
                                             {rideType === 'bus' ? <img className="transport-img" src={bus} alt="bus-image" /> : ''}
                                             {rideType === 'train' ? <img className="transport-img" src={train} alt="train-image" /> : ''}
-                                            {rideType === ':rideType' ? <img className="transport-img" src={bike} alt="bike-image" /> : ''}
-                                        </div>
-                                        <div className="col-md-3">
-                                            <div className="card-body">
-                                                <h5 className="card-title">{rideType === ':rideType' ? 'bike' : rideType}</h5>
+                                        </div> :
+                                            <div className="col-md-3">
+                                                <img className="transport-img" src={bike} alt="bike-image" />
                                             </div>
-                                        </div>
+                                        }
+                                        {rideType ? <div className="col-md-3">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{rideType}</h5>
+                                            </div>
+                                        </div> :
+                                            <div className="col-md-3">
+                                                <div className="card-body">
+                                                    <h5 className="card-title">bike</h5>
+                                                </div>
+                                            </div>
+                                        }
                                         <div className="col-md-3">
                                             <div className="card-body">
                                                 <h5><FontAwesomeIcon icon={faUserFriends} /> 2</h5>
