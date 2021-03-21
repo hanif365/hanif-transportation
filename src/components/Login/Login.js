@@ -10,7 +10,7 @@ import { useHistory, useLocation } from 'react-router';
 import Navbar from '../Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { } from '@fortawesome/free-solid-svg-icons'
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 
 
@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 } else {
-    firebase.app(); // if already initialized, use that one
+    firebase.app(); // if already initialized
 }
 
 
@@ -71,17 +71,17 @@ const Login = () => {
             let firstPassword = e.target.value.length;
         }
         if (e.target.name === 'password') {
-            const newPassword = {...password};
+            const newPassword = { ...password };
             newPassword.passName = e.target.value;
             setPassword(newPassword);
         }
         if (e.target.name === 'confirmedPassword') {
-            const newConPassword = {...conPassword};
+            const newConPassword = { ...conPassword };
             newConPassword.passName = e.target.value;
             setConPassword(newConPassword);
         }
         if (password.passName !== conPassword.passName) {   // if password and confirmed password not match then show an error
-            const newErrorMesg = {...password};             // message.
+            const newErrorMesg = { ...password };             // message.
             newErrorMesg.errorMesg = "Password and Confirmed Password not Matched! Please give same password both field";
             setPassword(newErrorMesg);
         }
@@ -165,16 +165,76 @@ const Login = () => {
                 setLoggedInUser(signedInUser);
                 history.replace(from);
             }).catch(err => {
-                var errorCode = err.code;
+                const errorCode = err.code;
+                const errorMessage = err.message;
+                const showError = {
+                    error: err.message
+                }
+                setUser(showError);
+            });
+    }
+
+    // Sign in using facebook
+
+    const handleFacebookSignIn = () => {
+        const fbProvider = new firebase.auth.FacebookAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(fbProvider)
+            .then(res => {
+                const { displayName, email, photoURL } = res.user;
+                const signedInUser = {
+                    isSignedIn: true,
+                    name: displayName,
+                    email: email,
+                    photo: photoURL
+                }
+                setLoggedInUser(signedInUser);
+                history.replace(from);
+            })
+            .catch(err => {
+                const errorCode = err.code;
+                const errorMessage = err.message;
+                const email = err.email;
+                console.log(err.message);
+                const showError = {
+                    error: err.message
+                }
+                setUser(showError);
+            });
+    }
+
+    // Sign in using Github
+
+    const handleGithubSignIn = () => {
+        const githubProvider = new firebase.auth.GithubAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(githubProvider)
+            .then(res => {
+                const user = res.user;
+                const { displayName, email, photoURL } = res.user;
+                const signedInUser = {
+                    isSignedIn: true,
+                    name: displayName,
+                    email: email,
+                    photo: photoURL
+                }
+                setLoggedInUser(signedInUser);
+                history.replace(from);
+            }).catch(err => {
                 var errorMessage = err.message;
                 var email = err.email;
-                var credential = err.credential;
+                console.log(err.message);
+                const showError = {
+                    error: err.message
+                }
+                setUser(showError);
             });
-
     }
 
     return (
-        <div className="main-container">
+        <div className="main-container container-fluid">
             <Navbar></Navbar>
             <div className="row">
                 <div className="col">
@@ -184,7 +244,7 @@ const Login = () => {
                                 <div >
                                     {/* <h1>Password : {password.passName}</h1>
                                     <h1>Con Password : {conPassword.passName}</h1> */}
-                                    {newUser && password.passName !== conPassword.passName &&  <p className="text-danger">{password.errorMesg}</p>}
+                                    {newUser && password.passName !== conPassword.passName && <p className="text-danger">{password.errorMesg}</p>}
                                     <p className="text-danger">{user.error}</p>
                                     {
                                         user.success && <h4 className="text-success">User Created Successfully</h4>
@@ -221,12 +281,23 @@ const Login = () => {
                             </form>
                         </div>
                     </div>
-                    <div className="google-container text-center py-5">
-                        <button className="btn btn-info btn-lg px-5" onClick={handleGoogleSignIn}><FontAwesomeIcon className="logo" icon={faGoogle} /> Continue With Google</button>
+                    <div className="google-container text-center pt-5">
+                        <button className="btn btn-info btn-lg login-others" onClick={handleGoogleSignIn}><FontAwesomeIcon className="logo" icon={faGoogle} /> Continue With Google</button>
                         {
                             user.isSignedIn && <p>Welcome, {user.name}</p>
                         }
-
+                    </div>
+                    <div className="facebook-container text-center pt-3">
+                        <button className="btn btn-info btn-lg login-others" onClick={handleFacebookSignIn}><FontAwesomeIcon className="logo" icon={faFacebook} /> Continue With Facebook</button>
+                        {
+                            user.isSignedIn && <p>Welcome, {user.name}</p>
+                        }
+                    </div>
+                    <div className="github-container text-center py-3">
+                        <button className="btn btn-info btn-lg login-others" onClick={handleGithubSignIn}><FontAwesomeIcon className="logo" icon={faGithub} /> Continue With GitHub</button>
+                        {
+                            user.isSignedIn && <p>Welcome, {user.name}</p>
+                        }
                     </div>
                 </div>
             </div>

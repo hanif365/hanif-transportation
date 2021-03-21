@@ -48,7 +48,7 @@ const Destination = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
                             <h3>SELECT YOUR JOURNEY ROUTE <FontAwesomeIcon icon={faPlane} /></h3>
                             <label htmlFor="pickFrom" className="form-label"><b>Pick From</b></label>
-                            <input name="example" className="form-control" onBlur={handlePickFrom} name="pickFrom" id="pickFrom" ref={register} />
+                            <input name="example" className="form-control" onBlur={handlePickFrom} name="pickFrom" ref={register({ required: true })} id="pickFrom" />
                             {errors.example && <span>This field is required</span>}
 
                             <label htmlFor="pickTo" className="form-label mt-3"><b>Pick To</b></label>
@@ -57,8 +57,6 @@ const Destination = () => {
 
                             <label className="form-label mt-3" htmlFor="date"><b>Date</b></label>
                             <DatePicker onChange={onChange} value={value} id="date" className="ms-3" />
-
-
 
                             <input onClick={() => setShow(!show)} className="w-100 mt-4 py-2" type="submit" />
                         </form>
@@ -196,7 +194,7 @@ const Destination = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 
 };
