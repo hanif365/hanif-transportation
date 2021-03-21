@@ -17,9 +17,6 @@ const Contact = () => {
                         <h3>Please wait....Thank You.</h3>
                         <Link className="btn btn-danger" to="/">Close</Link>
                     </div>
-                    <div>
-                        <Map></Map>
-                    </div>
                 </div>
             </div>
         </div>

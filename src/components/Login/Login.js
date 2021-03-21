@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react';
 import './Login.css'
-
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
-
 import { UserContext } from '../../App'
 import { useHistory, useLocation } from 'react-router';
 import Navbar from '../Navbar/Navbar';
@@ -24,7 +22,6 @@ if (!firebase.apps.length) {
 
 // Sign in using email and password 
 const Login = () => {
-    // For Google start
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
@@ -148,7 +145,7 @@ const Login = () => {
         });
     }
 
-    // Sign in using google
+    // Google Authentication
 
     const handleGoogleSignIn = () => {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -174,7 +171,7 @@ const Login = () => {
             });
     }
 
-    // Sign in using facebook
+    // Facebook Authentication
 
     const handleFacebookSignIn = () => {
         const fbProvider = new firebase.auth.FacebookAuthProvider();
@@ -204,7 +201,7 @@ const Login = () => {
             });
     }
 
-    // Sign in using Github
+    // GitHub Authentication
 
     const handleGithubSignIn = () => {
         const githubProvider = new firebase.auth.GithubAuthProvider();
@@ -242,10 +239,8 @@ const Login = () => {
                         <div className="form-content mt-5">
                             <form onSubmit={handleSubmit} className="">
                                 <div >
-                                    {/* <h1>Password : {password.passName}</h1>
-                                    <h1>Con Password : {conPassword.passName}</h1> */}
-                                    {newUser && password.passName !== conPassword.passName && <p className="text-danger">{password.errorMesg}</p>}
-                                    <p className="text-danger">{user.error}</p>
+                                    {newUser && password.passName !== conPassword.passName && <p className="text-warning">{password.errorMesg}</p>}
+                                    <p className="text-warning">{user.error}</p>
                                     {
                                         user.success && <h4 className="text-success">User Created Successfully</h4>
 
@@ -277,6 +272,10 @@ const Login = () => {
                                 <h5>{newUser ? "Already have an account?" : "Don't have an account?"}<span>{newUser ? <span className="login-btn" onClick={() => SetNewUser(!newUser)}> Login now</span> : <span className="create-btn" onClick={() => SetNewUser(!newUser)}> Create an account</span>}</span></h5>
                             </form>
                         </div>
+                    </div>
+                    <div className="text-center divider pt-5">
+                        <h2>OR LOG IN WITH</h2>
+                        <hr />
                     </div>
                     <div className="google-container text-center pt-5">
                         <button className="btn btn-info btn-lg login-others" onClick={handleGoogleSignIn}><FontAwesomeIcon className="logo" icon={faGoogle} /> Continue With Google</button>

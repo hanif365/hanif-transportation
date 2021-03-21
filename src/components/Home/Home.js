@@ -16,7 +16,6 @@ const Home = () => {
                     <hr />
                 </div>
                 <Services></Services>
-
             </div>
         </div>
     );
