@@ -5,7 +5,9 @@
 }
 
 .form-content{
-    background: turquoise;
+    /* background: turquoise; */
+    background: #0096c7;
+    border-radius: 10px;
     /* height: 570px; */
 
     /* width: 600px; */
@@ -13,7 +15,7 @@
     padding: 30px;
     margin: auto;
     margin-top: 120px !important;
-
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.507);
 }
 .login-btn{
     cursor: pointer;
@@ -32,6 +34,7 @@
     /* padding: 10px 150px !important; */
     /* max-width: 500px; */
     width: 31.25rem;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.322);
 }
 
 @media(max-width:768px){

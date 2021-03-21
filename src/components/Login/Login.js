@@ -259,8 +259,6 @@ const Login = () => {
                                     <input onBlur={handleBlur} type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email" required />
                                 </div>
 
-                                {/* 0000000000000000000000 */}
-
                                 <div class="mb-3">
                                     <input onBlur={handleBlur} type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password" required />
                                     <p>Please give at list 7 digit including a number</p>
@@ -270,12 +268,11 @@ const Login = () => {
                                     <p>Please give at list 7 digit including a number</p>
                                 </div>}
 
-                                {/*  00000000000000000000000000000000*/}
-                                <div class="mb-3 form-check">
+                                {!newUser && <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                     <label class="form-check-label" for="exampleCheck1">Remainder me</label>
-                                    {!newUser && <Link className="forgot-password" to="/login" onClick={() => SetNewUser(!newUser)}>Forgot password?</Link>}
-                                </div>
+                                    <Link className="forgot-password" to="/login" onClick={() => SetNewUser(!newUser)}>Forgot password?</Link>
+                                </div>}
                                 <input onClick={handleBlur} type="submit" class="btn btn-success w-100" value={newUser ? "CREATE AN ACCOUNT" : "LOGIN"} />
                                 <h5>{newUser ? "Already have an account?" : "Don't have an account?"}<span>{newUser ? <span className="login-btn" onClick={() => SetNewUser(!newUser)}> Login now</span> : <span className="create-btn" onClick={() => SetNewUser(!newUser)}> Create an account</span>}</span></h5>
                             </form>

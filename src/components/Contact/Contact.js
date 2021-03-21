@@ -4,6 +4,7 @@ import GoogleMap from '../GoogleMap/GoogleMap';
 import Navbar from '../Navbar/Navbar';
 import './Contact.css'
 import contactImg from '../../Assets/Images/banner2.jpg'
+import Map from '../Map/Map';
 
 const Contact = () => {
     return (
@@ -16,6 +17,9 @@ const Contact = () => {
                         <img className="my-2" src={contactImg} alt="error-message" />
                         <h3>Please wait....Thank You.</h3>
                         <Link className="btn btn-danger" to="/">Close</Link>
+                    </div>
+                    <div>
+                        <Map></Map>
                     </div>
                 </div>
             </div>

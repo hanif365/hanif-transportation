@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Destination.css'
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import Navbar from '../Navbar/Navbar';
 import DatePicker from 'react-date-picker';
 import placeLinkImg from '../../Assets/Images/placelink1.png'
-import transportData from '../../data/data.json'
 import car from '../../Assets/Images/car.png'
 import bus from '../../Assets/Images/bus.png'
 import train from '../../Assets/Images/train.png'
@@ -14,10 +13,15 @@ import bike from '../../Assets/Images/bike.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+// import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import GoogleMap from '../GoogleMap/GoogleMap';
 
+//New map
+import Map from '../Map/Map';
+
+
 const Destination = () => {
+
     const [show, setShow] = useState(true);
     const { rideType } = useParams();           // useParams()
 
@@ -42,9 +46,9 @@ const Destination = () => {
     return (
         <div className="destination-container">
             <Navbar></Navbar>
-            <div className="container-fluid py-5">
+            <div className="container py-5">
                 <div className="row">
-                    {show ? <div className="col-md-8 ride-info m-auto py-5 select-route-form">
+                    {show ? <div className="col-md-4 ride-info m-auto py-5 select-route-form">
                         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
                             <h3>SELECT YOUR JOURNEY ROUTE <FontAwesomeIcon icon={faPlane} /></h3>
                             <label htmlFor="pickFrom" className="form-label"><b>Pick From</b></label>
@@ -187,19 +191,20 @@ const Destination = () => {
                             </div>
                         </div>
                     }
-                </div>
-                <div className="row">
-                    <div className="col google-map">
-                        <GoogleMap></GoogleMap>
+
+                    <div className="col-md-8 google-map py-5 my-5 ps-3">
+                        <Map></Map>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 
 };
 
 
-export default GoogleApiWrapper({
-    apiKey: ('')
-})(Destination)
+// export default GoogleApiWrapper({
+//     apiKey: ('')
+// })(Destination)
+
+export default Destination;
